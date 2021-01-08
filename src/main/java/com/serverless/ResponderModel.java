@@ -29,13 +29,14 @@ public class ResponderModel {
         Matcher largestMatcher = Pattern.compile(".*which of the following numbers is the largest: (\\d+)").matcher(question);
         if (largestMatcher.matches()) {
 
-            String[] numbers = sumMatcher.group(1).split(", ");
+            String[] numbers = largestMatcher.group(1).trim().split(", ");
             int largest = Integer.parseInt(numbers[0]);
             for (String number : numbers) {
                 if (Integer.parseInt(number) > largest) {
                     largest = Integer.parseInt(number);
                 }
             }
+
             return String.valueOf(largest);
         }
         return teamName;
